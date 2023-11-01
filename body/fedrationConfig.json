@@ -1,0 +1,6 @@
+{
+    "name":"body",
+    "exposes":{
+        "./CategoryCard.vue":"./src/components/CategoryCard.vue"
+    }
+}
