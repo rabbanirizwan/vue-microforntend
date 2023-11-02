@@ -1,6 +1,9 @@
 {
-    "name":"body",
-    "exposes":{
-        "./CategoryCard.vue":"./src/components/CategoryCard.vue"
-    }
+  "name": "body",
+  "exposes": {
+    "./CategoryCard.vue": "./src/components/CategoryCard.vue",
+    "./Card.vue": "./src/components/Card.vue",
+    "./ShoppingBucket.vue":"./src/views/Checkout/Checkout.vue",
+    "./store.js": "./src/store/index.js"
+  }
 }

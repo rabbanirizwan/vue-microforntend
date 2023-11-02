@@ -1,7 +1,11 @@
 const { defineConfig } = require("@vue/cli-service");
 
 module.exports = defineConfig({
+  transpileDependencies: true,
   publicPath: "http://localhost:8081",
+  devServer: {
+    historyApiFallback: true,
+  },
   chainWebpack: (config) => {
     config.optimization.delete("splitChunks");
     config
@@ -10,6 +14,7 @@ module.exports = defineConfig({
         {
           remotes: {
             body: "body@http://localhost:8080/remoteEntry.js",
+            header: "header@http://localhost:8082/remoteEntry.js",
           },
 
           shared: {
@@ -22,5 +27,5 @@ module.exports = defineConfig({
         },
       ]);
   },
-  transpileDependencies: true,
+ 
 });

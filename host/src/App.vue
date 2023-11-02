@@ -1,25 +1,39 @@
 <template>
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <CategoryCard />
+    <Header :cartItems="totalItems"/>
+
+    <router-view></router-view>
+    <!-- <Card />
+    <CategoryCard /> -->
     <!-- <Content/> -->
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import CategoryCard from "body/CategoryCard.vue";
+// import CategoryCard from "body/CategoryCard.vue";
+// import Card from "body/Card.vue";
+import Header from "header/Header.vue";
+
 // import Content from 'body/Content'
 
 export default {
   name: "App",
   components: {
     // HelloWorld,
-    CategoryCard,
+    Header,
+    // CategoryCard,
+    // Card,
     // Content
   },
+  computed: {
+    totalItems() {
+      // Perform calculations based on dataValue
+      return this.$store.getters.cartItem.length;
+    }
+  }
 };
 </script>
 
-<style></style>
+

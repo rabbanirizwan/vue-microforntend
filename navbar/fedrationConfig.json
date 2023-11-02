@@ -1,0 +1,6 @@
+{
+    "name":"header",
+    "exposes":{
+        "./Header.vue":"./src/components/Navbar.vue"
+    }
+}
