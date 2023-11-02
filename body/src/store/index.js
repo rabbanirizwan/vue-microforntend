@@ -5,17 +5,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    counter: 0,
     cart: [],
   },
 
   mutations: {
-    increment(state) {
-      state.counter++;
-    },
-    decrement(state) {
-      state.counter--;
-    },
     addToCart(state, item) {
       const existingItem = state.cart.find((i) => i.name === item.name);
       if (existingItem) {
@@ -47,13 +40,6 @@ const store = new Vuex.Store({
   },
 
   actions: {
-    increment({ commit }) {
-      commit("increment");
-    },
-
-    decrement(context) {
-      context.commit("decrement");
-    },
     addToCart({ commit }, item) {
       commit("addToCart", item);
     },

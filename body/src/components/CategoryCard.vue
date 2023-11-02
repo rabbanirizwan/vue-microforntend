@@ -25,11 +25,6 @@
 export default {
   name: "CategoryCard",
 
-  methods: {
-    increment() {
-      this.$store.commit("increment");
-    },
-  },
   data() {
     return {
       products: [

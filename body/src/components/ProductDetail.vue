@@ -46,18 +46,14 @@ export default {
         title: "Product Title",
         price: 99.99,
         description: "Product Description",
-        image: "https://via.placeholder.com/150", // Replace with the actual image URL
+        image: "https://via.placeholder.com/150",
       },
     };
   },
   methods: {
     addToCart() {
-      // Add to cart logic
     },
   },
 };
 </script>
 
-<style>
-/* Add custom styles here */
-</style>

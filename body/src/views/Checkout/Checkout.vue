@@ -24,7 +24,6 @@
         Subtotal ({{ totalItems }})
         <span className="font-bold">
           {{ calculateTotalPrice }}$
-          <!-- <Currency quantity={total * 71} currency="INR" /> -->
         </span>
       </h2>
 
@@ -91,6 +90,3 @@ export default {
 };
 </script>
 
-<style>
-/* Add your custom styles here */
-</style>
