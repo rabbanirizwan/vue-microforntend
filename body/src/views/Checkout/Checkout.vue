@@ -1,24 +1,35 @@
 <template>
-  <div class="lg:flex max-w-screen-2xl mx-auto bg-gray-100 m-4">
-    <div class="flex flex-col p-5 space-y-50 bg-white shadow-md m-5">
-      <h1 class="text-3xl border-b pb-4 text-left">Shopping Basket</h1>
+  <div
+    class="flex justify-between flex-wrap max-w-screen-2xl mx-auto bg-gray-100 p-10"
+  >
+    <div class="flex flex-col p-5 space-y-50 bg-white shadow-md pr-3 flex-1">
+      <h1 class="text-3xl border-b pb-4 text-left">
+        {{
+          getCartItem.length > 0
+            ? "Shopping Basket"
+            : "Your Amazon Basket is empty"
+        }}
+      </h1>
       <shopping-bucket
-        v-for="(bucketItem, index) in dummyData"
+        v-for="(bucketItem, index) in getCartItem"
         :key="index"
         :bucketItem="bucketItem"
+        :removeGroupFromBasket="removeGroupFromBasket"
+        :removeItemFromBasket="removeItemFromBasket"
+        :addItemToBasket="addItemToBasket"
       />
     </div>
-    <div class="flex flex-col bg-white p-10 shadow-md flex-1">
+    <div class="flex flex-col bg-white p-10 shadow-md">
       <h2 class="whitespace-nowrap">
-        Subtotal ({{totalItems}})
+        Subtotal ({{ totalItems }})
         <span className="font-bold">
-            {{calculateTotalPrice}}$
+          {{ calculateTotalPrice }}$
           <!-- <Currency quantity={total * 71} currency="INR" /> -->
         </span>
       </h2>
 
       <button role="link" class="bg-slate-500 p-4 rounded">
-        Sign in to checkout 
+        Sign in to checkout
       </button>
     </div>
   </div>
@@ -30,16 +41,16 @@ export default {
   components: { shoppingBucket },
   name: "CartPage",
   methods: {
-    removeItemFromBasket() {
-      // Remove item logic
+    removeItemFromBasket(bucketItem) {
+       this.$store.commit("removeFromCart",bucketItem)
     },
-    addItemToBasket() {
-      // Add item logic
+    addItemToBasket(bucketItem) {
+       this.$store.commit('addToCart',bucketItem)
     },
-    removeGroupFromBasket() {
-      // Remove group logic
+    removeGroupFromBasket(bucketItem) {
+        console.log("bucketItem",bucketItem)
+        this.$store.commit("removeGroup",bucketItem)
     },
-   
   },
   computed: {
     getCartItem() {
@@ -49,7 +60,10 @@ export default {
       return this.getCartItem.reduce((total, item) => total + item.quantity, 0);
     },
     calculateTotalPrice() {
-      return this.getCartItem.reduce((total, item) => total + item.price * item.quantity, 0);
+      return this.getCartItem.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
     },
   },
   data() {
@@ -59,8 +73,7 @@ export default {
           image: "https://via.placeholder.com/150",
           name: "Dummy Product Title",
           rating: 4,
-          description:
-            "Lorem ipsum dolor sit amet.",
+          description: "Lorem ipsum dolor sit amet.",
           price: 10,
           quantity: 1,
         },

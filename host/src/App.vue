@@ -29,8 +29,7 @@ export default {
   },
   computed: {
     totalItems() {
-      // Perform calculations based on dataValue
-      return this.$store.getters.cartItem.length;
+      return this.$store.getters.cartItem.reduce((total,item)=>total+ item.quantity,0);
     }
   }
 };

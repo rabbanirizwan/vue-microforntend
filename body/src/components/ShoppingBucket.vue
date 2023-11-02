@@ -19,29 +19,28 @@
           class="fa fa-solid fa-star h-5 text-yellow-500"
         ></i>
       </div>
-      <p class="text-xs my-2 line-clamp-3">{{ bucketItem.description }}</p>
-      <span class="font-bold"> {{ bucketItem.price }} INR </span>
+      <p class="text-xs my-2 line-clamp-3">
+        {{ bucketItem.description }}
+      </p>
+      <span class="font-bold"> {{ bucketItem.price }} $ </span>
     </div>
 
     <div class="flex flex-col space-y-2 my-auto justify-self-end">
       <div class="flex justify-between xs:justify-start">
-        <button
-          class="bg-yellow-500 text-white px-4 py-2"
-          @click="removeItemFromBasket"
-        >
+        <button class="bg-yellow-500 text-white px-4 py-2" @click="removeItemFromBasket(bucketItem)">
           <i class="fa fa-solid fa-minus"></i>
         </button>
         <div class="p-2 whitespace-normal">
           Quantity: <span class="font-bold">{{ bucketItem.quantity }}</span>
         </div>
-        <button
-          class="bg-yellow-500 text-white px-4 py-2"
-          @click="addItemToBasket"
-        >
+        <button class="bg-yellow-500 text-white px-4 py-2" @click="addItemToBasket(bucketItem)">
           <i class="fa fa-solid fa-plus"></i>
         </button>
       </div>
-      <button class="bg-yellow-500 px-4 py-2" @click="removeGroupFromBasket">
+      <button
+        class="bg-yellow-500 px-4 py-2"
+        @click="removeGroupFromBasket(bucketItem)"
+      >
         Remove from Basket
       </button>
     </div>
@@ -51,30 +50,6 @@
 <script>
 export default {
   name: "ShoppingBucket",
-  props:["bucketItem"],
-  methods: {
-    removeItemFromBasket() {
-      // Remove item logic
-    },
-    addItemToBasket() {
-      // Add item logic
-    },
-    removeGroupFromBasket() {
-      // Remove group logic
-    },
-  },
-  data() {
-    return {
-      dummyData: {
-        image: "https://via.placeholder.com/150",
-        name: "Dummy Product Title",
-        rating: 4,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        price: 10,
-        quantity: 1,
-      },
-    };
-  },
+  props: ["bucketItem", "removeGroupFromBasket","addItemToBasket","removeItemFromBasket"],
 };
 </script>
